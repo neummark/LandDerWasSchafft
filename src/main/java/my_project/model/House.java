@@ -23,8 +23,34 @@ public class House extends GraphicalObject {
      */
     @Override
     public void draw(DrawTool drawTool) {
-        drawTool.setCurrentColor(Color.DARK_GRAY);
-        drawTool.drawFilledRectangle(150,300,100,80);
+        drawTool.setCurrentColor(Color.blue);
+        drawTool.drawRectangle(0,0,800,829);
+        drawTool.setCurrentColor(Color.green);
+        drawTool.drawFilledRectangle(0,600,800,200);
+
+        drawTool.setCurrentColor(143, 20, 2,255);
+        drawTool.drawFilledRectangle(150,400,200,240); //house
+        drawTool.setCurrentColor(Color.black);
+        drawTool.drawFilledRectangle(225,540,50,100); //door
+        drawTool.setCurrentColor(Color.yellow);
+        drawTool.drawFilledCircle(265,590,5);//doorknob
+        drawTool.setCurrentColor(Color.black);
+        drawTool.drawFilledRectangle(155,530,60,70); //windows frames
+        drawTool.drawFilledRectangle(280,530,60,70);
+        drawTool.setCurrentColor(Color.lightGray);
+        drawTool.drawFilledRectangle(165,540,40,50); //windows
+        drawTool.drawFilledRectangle(290,540,40,50);
+        drawTool.setCurrentColor(Color.black);
+        drawTool.drawFilledRectangle(165,560,40,10);//horizontal window lines
+        drawTool.drawFilledRectangle(290,560,40,10);
+        drawTool.drawFilledRectangle(180,540,10,50);//vertical window lines
+        drawTool.drawFilledRectangle(305,540,10,50);
+        drawTool.setCurrentColor(Color.black);
+        drawTool.drawFilledTriangle(130,405,370,405,250,240);//roof outline
+        drawTool.setCurrentColor(Color.red);
+        drawTool.drawFilledTriangle(140,400,360,400,250,250); //main roof
+        drawTool.setCurrentColor(Color.darkGray);
+        drawTool.drawFilledPolygon(190,250,230,250,230,300,190,350);
     }
 
     /**
