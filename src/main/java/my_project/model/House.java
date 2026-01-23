@@ -30,6 +30,17 @@ public class House extends GraphicalObject {
 
         drawTool.setCurrentColor(143, 20, 2,255);
         drawTool.drawFilledRectangle(150,400,200,240); //house
+        drawTool.setCurrentColor(191, 191, 191,255);
+
+        for(int j = 0; j < 12; j = j + 1){
+            for(int i = 0; i < 5; i = i + 1){
+                if(j != 11) drawTool.drawLine(150+i*40,400+j*20,150+i*40,400+j*20+40);
+                drawTool.drawLine(150,400+j*20,350,400+j*20);
+            }
+        }
+
+
+
         drawTool.setCurrentColor(Color.black);
         drawTool.drawFilledRectangle(225,540,50,100); //door
         drawTool.setCurrentColor(Color.yellow);
@@ -37,7 +48,7 @@ public class House extends GraphicalObject {
         drawTool.setCurrentColor(Color.black);
         drawTool.drawFilledRectangle(155,530,60,70); //windows frames
         drawTool.drawFilledRectangle(280,530,60,70);
-        drawTool.setCurrentColor(Color.lightGray);
+        drawTool.setCurrentColor(211, 211, 211,255);
         drawTool.drawFilledRectangle(165,540,40,50); //windows
         drawTool.drawFilledRectangle(290,540,40,50);
         drawTool.setCurrentColor(Color.black);
@@ -47,11 +58,11 @@ public class House extends GraphicalObject {
         drawTool.drawFilledRectangle(305,540,10,50);
         drawTool.setCurrentColor(Color.black);
         drawTool.drawFilledTriangle(130,405,370,405,250,240);//roof outline
-        drawTool.setCurrentColor(Color.red);
+        drawTool.setCurrentColor(191, 65, 44,255);
         drawTool.drawFilledTriangle(140,400,360,400,250,250); //main roof
         drawTool.setCurrentColor(Color.darkGray);
-        drawTool.drawFilledPolygon(190,250,230,250,230,300,190,350);
-    }
+        drawTool.drawFilledPolygon(190,250,230,250,230,300,190,350); //chimney
+}
 
     /**
      * Wird mit jedem Frame vom Framework aufgerufen und dient zur Manipulation des Objekts im Verlauf

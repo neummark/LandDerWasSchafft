@@ -2,6 +2,7 @@ package my_project.control;
 
 import KAGO_framework.control.ViewController;
 import my_project.model.House;
+import my_project.model.Twee;
 
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern.
@@ -19,6 +20,7 @@ public class ProgramController {
     // Referenzen
     private final ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private House firstHouse; // deklariert eine Referenz für ein Objekt der Klasse House
+    private Twee firstTwee;
 
     /**
      * Konstruktor
@@ -40,6 +42,10 @@ public class ProgramController {
         firstHouse = new House();
         // Teile dem ViewController-Objekt mit, dass das House-Objekt gezeichnet werden soll
         viewController.draw(firstHouse);
+
+        firstTwee = new Twee();
+        viewController.draw(firstTwee);
+
     }
 
     /**
