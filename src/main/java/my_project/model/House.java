@@ -23,11 +23,6 @@ public class House extends GraphicalObject {
      */
     @Override
     public void draw(DrawTool drawTool) {
-        drawTool.setCurrentColor(Color.blue);
-        drawTool.drawRectangle(0,0,800,829);
-        drawTool.setCurrentColor(Color.green);
-        drawTool.drawFilledRectangle(0,600,800,200);
-
         drawTool.setCurrentColor(143, 20, 2,255);
         drawTool.drawFilledRectangle(150,400,200,240); //house
         drawTool.setCurrentColor(191, 191, 191,255);
