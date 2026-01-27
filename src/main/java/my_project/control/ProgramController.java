@@ -5,6 +5,7 @@ import my_project.model.Hintergrund;
 import my_project.model.House;
 import my_project.model.Twee;
 import my_project.model.Gate;
+import my_project.model.Cloud;
 
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern.
@@ -25,6 +26,7 @@ public class ProgramController {
     private Twee firstTwee;
     private Hintergrund hintergrund1;
     private Gate gate1;
+    private Cloud cloud1;
 
     /**
      * Konstruktor
@@ -45,6 +47,9 @@ public class ProgramController {
         hintergrund1 = new Hintergrund();
         viewController.draw(hintergrund1);
 
+        cloud1 = new Cloud(230,150,50);
+        viewController.draw(cloud1);
+
         // Erstelle ein Objekt der Klasse House und initialisiere damit die Referenz house1
         firstHouse = new House();
         // Teile dem ViewController-Objekt mit, dass das House-Objekt gezeichnet werden soll
@@ -53,7 +58,7 @@ public class ProgramController {
         gate1 = new Gate();
         viewController.draw(gate1);
 
-        firstTwee = new Twee();
+        firstTwee = new Twee(580,450);
         viewController.draw(firstTwee);
 
 
