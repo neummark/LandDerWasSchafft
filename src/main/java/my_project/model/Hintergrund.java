@@ -7,19 +7,33 @@ import java.awt.*;
 
 
 public class Hintergrund extends GraphicalObject {
-    public Hintergrund() {
+
+    private boolean daytime;
+    private int time = (int)(Math.random()*2000);
+
+    public Hintergrund(boolean daytime) {
+        this.daytime = daytime;
     }
 
     public void draw(DrawTool drawTool) {
-        //air
-        drawTool.setCurrentColor(100, 130, 255, 255);
-        drawTool.drawFilledRectangle(0, 0, 800, 780);
+        if (daytime) {
+            if(time < 1200) {
+                drawTool.setCurrentColor(new Color(100, 130, 255, 255));
+                drawTool.drawFilledRectangle(0, 0, 1200, 780);
+                drawTool.setCurrentColor(new Color(253, 218, 13, 255));
+                drawTool.drawFilledCircle(time, 40, 60);
+            } else if (time > 1200) {
+                drawTool.setCurrentColor(Color.BLACK);
+                drawTool.drawFilledRectangle(0, 0, 1200, 780);
+            }
+        } else {
+            drawTool.setCurrentColor(new Color(100, 130, 255, 255));
+            drawTool.drawFilledRectangle(0, 0, 1200, 780);
+            drawTool.setCurrentColor(new Color(253, 218, 13, 255));
+            drawTool.drawFilledCircle(50, 40, 60);
+        }
         //earf
-        drawTool.setCurrentColor(124, 189, 107, 255);
-        drawTool.drawFilledRectangle(0, 600, 800, 200);
-        //sonne
-        drawTool.setCurrentColor(253, 218, 13, 255);
-        drawTool.drawFilledCircle(50, 40, 60);
-
+        drawTool.setCurrentColor(new Color(124, 189, 107, 255));
+        drawTool.drawFilledRectangle(0, 600, 1200, 200);
     }
 }

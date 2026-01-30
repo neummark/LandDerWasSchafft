@@ -23,7 +23,7 @@ public class ProgramController {
     // Referenzen
     private final ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private House firstHouse; // deklariert eine Referenz für ein Objekt der Klasse House
-    private Twee firstTwee;
+    private Twee firstTwee, secondTwee, thirdTwee, fourthTwee, fifthTwee;
     private Hintergrund hintergrund1;
     private Gate gate1;
     private Cloud cloud1;
@@ -44,7 +44,7 @@ public class ProgramController {
      * was zu diesem Zeipunkt passieren muss.
      */
     public void startProgram() {
-        hintergrund1 = new Hintergrund();
+        hintergrund1 = new Hintergrund(false);
         viewController.draw(hintergrund1);
 
         cloud1 = new Cloud(230,150,50);
@@ -58,8 +58,16 @@ public class ProgramController {
         gate1 = new Gate();
         viewController.draw(gate1);
 
-        firstTwee = new Twee(580,450);
+        firstTwee = new Twee(600,450,70); //520,450 (leaves
+        secondTwee = new Twee(500,460,60);
+        thirdTwee = new Twee(650,500,50);
+        fourthTwee = new Twee(750,450,70);
+        fifthTwee = new Twee(850,480,50);
         viewController.draw(firstTwee);
+        viewController.draw(secondTwee);
+        viewController.draw(thirdTwee);
+        viewController.draw(fourthTwee);
+        viewController.draw(fifthTwee);
 
 
     }

@@ -67,8 +67,15 @@ public class Cloud extends GraphicalObject {
         drawTool.drawFilledCircle(x+r*2,y+r*0.25,r);
         drawTool.drawFilledCircle(x+r*2.5,y+r*0.75,r);
         drawTool.drawFilledCircle(x+r*3,y,r);
+    }
 
-
+    @Override
+    public void update(double dt) {
+        if (x < 1200+ 2*r) {
+            x += dt * 100;
+        } else {
+            x = 0 - 4*r;
+        }
     }
 }
 
