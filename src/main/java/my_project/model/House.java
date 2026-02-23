@@ -10,11 +10,14 @@ import java.awt.*;
  */
 public class House extends GraphicalObject {
 
-    /**
-     * Erzeugt ein neues Objekt der Klasse House
-     */
-    public House(){
-        // Hier passiert momentan nichts - da muss auch anfangs nichts dran geändert werden.
+    private double size;
+    private Hintergrund hintergrund;
+
+    public House(int x, int y, int size, Hintergrund hintergrund){
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.hintergrund = hintergrund;
     }
 
 
@@ -24,40 +27,56 @@ public class House extends GraphicalObject {
     @Override
     public void draw(DrawTool drawTool) {
         drawTool.setCurrentColor(143, 20, 2,255);
-        drawTool.drawFilledRectangle(150,400,200,240); //house
+        //drawTool.drawFilledRectangle(150,400,200,240); house
+        drawTool.drawFilledRectangle(x,y,size,size *1.1);
         drawTool.setCurrentColor(191, 191, 191,255);
 
         for(int j = 0; j < 12; j = j + 1){
-            for(int i = 0; i < 5; i = i + 1){
-                if(j != 11) drawTool.drawLine(150+i*40,400+j*20,150+i*40,400+j*20+40);
-                drawTool.drawLine(150,400+j*20,350,400+j*20);
+            for(int i = 0; i < 6; i = i + 1){
+                if(j != 11)
+                drawTool.drawLine(x+i*(size*0.2),y+j*(size*0.05),x+i*(size*0.2),y+j*(size*0.1)+(size*0.1));//horizontal lines
+                drawTool.drawLine(x,y+j*(size*0.1),x+size,y+j*(size*0.1)); //vertical lines
             }
         }
 
 
 
         drawTool.setCurrentColor(Color.black);
-        drawTool.drawFilledRectangle(225,540,50,100); //door
+        drawTool.drawFilledRectangle(x + (size *0.375),y + (size * 0.6),size / 4,size /2); //door
         drawTool.setCurrentColor(Color.yellow);
-        drawTool.drawFilledCircle(265,590,5);//doorknob
+        drawTool.drawFilledCircle(x +(size * 0.575),y +(size *0.85),size *0.025);//doorknob
         drawTool.setCurrentColor(Color.black);
-        drawTool.drawFilledRectangle(155,530,60,70); //windows frames
-        drawTool.drawFilledRectangle(280,530,60,70);
-        drawTool.setCurrentColor(211, 211, 211,255);
-        drawTool.drawFilledRectangle(165,540,40,50); //windows
-        drawTool.drawFilledRectangle(290,540,40,50);
+        drawTool.drawFilledRectangle(x+(size*0.025),y+(size*0.65),size*0.3,size*0.35); //windows frames
+        drawTool.drawFilledRectangle(x+(size*0.65),y+(size*0.65),size*0.3,size*0.35);
+        if(hintergrund.time > 1200){
+            drawTool.setCurrentColor(new Color(255, 250, 165));
+        } else {
+            drawTool.setCurrentColor(new Color(149, 255, 223));
+        }
+        drawTool.drawFilledRectangle(x+(size*0.075),y+(size*0.7),size*0.20,size*0.25); //windows
+        drawTool.drawFilledRectangle(x +(size*0.7),y+(size*0.7),size*0.20,size*0.25);
         drawTool.setCurrentColor(Color.black);
-        drawTool.drawFilledRectangle(165,560,40,10);//horizontal window lines
-        drawTool.drawFilledRectangle(290,560,40,10);
-        drawTool.drawFilledRectangle(180,540,10,50);//vertical window lines
-        drawTool.drawFilledRectangle(305,540,10,50);
+        drawTool.drawFilledRectangle(x+(size*0.075),y+(size*0.8),size*0.20,size*0.05);//horizontal window lines
+        drawTool.drawFilledRectangle(x+(size*0.7),y+(size*0.8),size*0.20,size*0.05);
+        drawTool.drawFilledRectangle(x+(size*0.15),y+(size*0.7),size*0.05,size*0.25);//vertical window lines
+        drawTool.drawFilledRectangle(x+(size*0.775),y+(size*0.7),size*0.05,size*0.25);
         drawTool.setCurrentColor(Color.black);
-        drawTool.drawFilledTriangle(130,405,370,405,250,240);//roof outline
+        drawTool.drawFilledTriangle(x-(size*0.1),y+(size*0.025),x+(size*1.1),y+(size*0.025),x+(size*0.5),y-(size*0.8));//roof outline
         drawTool.setCurrentColor(191, 65, 44,255);
-        drawTool.drawFilledTriangle(140,400,360,400,250,250); //main roof
+        drawTool.drawFilledTriangle(x-(size*0.05),y,x+(size*1.05),y,x+(size*0.5),y-(size*0.75)); //main roof
         drawTool.setCurrentColor(Color.darkGray);
-        drawTool.drawFilledPolygon(190,250,230,250,230,300,190,350); //chimney
-}
+        drawTool.drawFilledPolygon(x+(size*0.2),y-(size*0.75) ,x+(size*0.4),y-(size*0.75) ,x+(size*0.4),y-(size*0.5) ,x+(size*0.2),y-(size*0.25)); //chimney
+
+
+        if (hintergrund.time > 1200){
+            drawTool.setCurrentColor(211, 211, 111,155);
+            drawTool.drawFilledRectangle(x+(size*0.075),y+(size*0.7),size*0.20,size*0.25); //windows
+            drawTool.drawFilledRectangle(x +(size*0.7),y+(size*0.7),size*0.20,size*0.25);
+            drawTool.drawFilledPolygon(x+(size*0.075),y+(size*0.95),x+(size*0.275),y+(size*0.95), x+(size*0.325),hintergrund.earthHeight+(size*0.25), x+(size*0.04),hintergrund.earthHeight+(size*0.25));
+            drawTool.drawFilledPolygon(x +(size*0.7),y+(size*0.95), x +(size*0.9),y+(size*0.95), x +(size*0.95),hintergrund.earthHeight+(size*0.25), x +(size*0.65),hintergrund.earthHeight+(size*0.25));
+        }
+
+    }
 
     /**
      * Wird mit jedem Frame vom Framework aufgerufen und dient zur Manipulation des Objekts im Verlauf
