@@ -6,30 +6,32 @@ import java.awt.*;
 
 public class Cloud extends GraphicalObject {
 
-    private double r;
-    private Boolean chooseSpeed;
+
     private double speed;
-    private Boolean goRight = false;
-    private int Nummmer = (int) (Math.random()*1.1);
+    private boolean goRight = true;
+    private final double standardRadius = 50;
 
-
-
-    public Cloud(double x, double y, double r, Boolean chooseSpeed, double speed){
+    public Cloud(double x, double y, double r){
         this.x = x;	//wird bereits in GraphicalObjekt deklariert
         this.y = y;	//wird bereits in GraphicalObjekt deklariert
-        this.r = r;
-        this.chooseSpeed = chooseSpeed;
+        this.radius = r;
+        speed = Math.random()*400+100;
+    }
+
+    public Cloud(double x, double y, double r, double speed){
+        this.x = x;	//wird bereits in GraphicalObjekt deklariert
+        this.y = y;	//wird bereits in GraphicalObjekt deklariert
+        this.radius = r;
         this.speed = speed;
-        if(chooseSpeed == false){
-            speed = Math.random()*400+100;
-        }
-        //goRight = Nummmer != 1;
+         //int Nummmer = (int)(Math.random()*2);
+        //goRight = Nummmer >= 1;
 
     }
 
 
     public void draw(DrawTool drawTool) {
         drawTool.setCurrentColor(Color.lightGray);
+        double r = radius;
         drawTool.drawFilledCircle(x,y,r);
         drawTool.drawFilledCircle(x+r,y+r*0.75,r);
         drawTool.drawFilledCircle(x+r*0.5,y-r*0.5,r);
@@ -40,27 +42,23 @@ public class Cloud extends GraphicalObject {
 
     @Override
     public void update(double dt) {
+        double r = radius;
         if(goRight == true){
             if (x < 1200+ 2*r) {
-                x += dt * speed;
+                x = x + dt * speed*(radius/standardRadius);
+                System.out.println(radius/standardRadius);
             } else {
                 x = 0 - 4*r;
-                y = Math.random()*500+50;
-                r = Math.random()*50 + 10;
-                if(r < 20){
-                    x -= dt * speed;
-                }
+                y = Math.random()*500+r;
+                radius = Math.random()*50 + 10;
             }
         } else {
             if (x > 0 - 2*r) {
-                x -= dt * speed;
+                x = x - dt * speed*(radius/standardRadius);
             } else {
                 x = 1200 + 4*r;
                 y = Math.random()*500+50;
-                r = Math.random()*50 + 10;
-                if(r < 20){
-                    x += dt * speed;
-                }
+                radius = Math.random()*50 + 10;
             }
         }
 
