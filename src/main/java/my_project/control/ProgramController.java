@@ -44,7 +44,7 @@ public class ProgramController {
      * was zu diesem Zeipunkt passieren muss.
      */
     public void startProgram() {
-        hintergrund1 = new Hintergrund(true,2000);
+        hintergrund1 = new Hintergrund(0);
         viewController.draw(hintergrund1);
 
         cloud1 = new Cloud(230,150,50,500);

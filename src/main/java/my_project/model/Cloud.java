@@ -46,7 +46,6 @@ public class Cloud extends GraphicalObject {
         if(goRight == true){
             if (x < 1200+ 2*r) {
                 x = x + dt * speed*(radius/standardRadius);
-                System.out.println(radius/standardRadius);
             } else {
                 x = 0 - 4*r;
                 y = Math.random()*500+r;
